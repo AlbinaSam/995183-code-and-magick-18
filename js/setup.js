@@ -7,17 +7,17 @@ var WIZARDS_NUMBER = 4;
 
 document.querySelector('.setup').classList.remove('hidden');
 
-var generateRandomData = function (wizard) {
-  var randomValue = wizard[Math.floor(Math.random(wizard) * wizard.length)];
+var getRandomElement = function (elements) {
+  var randomValue = elements[Math.floor(Math.random(elements) * elements.length)];
   return randomValue;
 };
 
 var wizards = [];
 for (var i = 0; i < WIZARDS_NUMBER; i++) {
   var wizardDescription = {
-    name: generateRandomData(NAMES) + ' ' + generateRandomData(SURNAMES),
-    coatColor: generateRandomData(COAT_COLORS),
-    eyesColor: generateRandomData(EYES_COLORS)
+    name: getRandomElement(NAMES) + ' ' + getRandomElement(SURNAMES),
+    coatColor: getRandomElement(COAT_COLORS),
+    eyesColor: getRandomElement(EYES_COLORS)
   };
   wizards.push(wizardDescription);
 }
