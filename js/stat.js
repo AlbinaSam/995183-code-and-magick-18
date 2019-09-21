@@ -46,13 +46,7 @@ window.renderStatistics = function (ctx, names, times) {
 
     ctx.fillText(Math.floor(times[i]), CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, CLOUD_Y + TEXT_GAP + LINE_HEIGHT * 2 + (MAX_BAR_HEIGHT - barHeight));
 
-    if (names[i] === 'Вы') {
-      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-    } else {
-      ctx.fillStyle = 'hsl(240, ' + Math.floor(Math.random() * MULTIPLIER) + '%, 50%)';
-    }
-
-    /* names[i] === 'Вы' ? ctx.fillStyle = 'rgba(255, 0, 0, 1)' : ctx.fillStyle = 'hsl(240, ' + Math.floor(Math.random() * MULTIPLIER) + '%, 50%)'; */
+    ctx.fillStyle = names[i] === 'Вы' ? ctx.fillStyle = 'rgba(255, 0, 0, 1)' : ctx.fillStyle = 'hsl(240, ' + Math.floor(Math.random() * MULTIPLIER) + '%, 50%)';
 
     var rectX = CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i;
 
