@@ -33,13 +33,6 @@ var renderWizard = function (wizard) {
 
   return wizardElement;
 };
-/*
-var fragment = document.createDocumentFragment();
-
-for (var i = 0; i < wizards.length; i++) {
-    fragment.appendChild(renderWizard(wizards[i]));
-  }
-*/
 
 var fragment = document.createDocumentFragment();
 
