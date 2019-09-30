@@ -56,6 +56,7 @@ document.querySelector('.setup-similar').classList.remove('hidden');
 var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
+var curElement = document.activeElement;
 
 var onPopupEscPress = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) {
@@ -66,6 +67,7 @@ var onPopupEscPress = function (evt) {
 var openPopup = function () {
   setup.classList.remove('hidden');
   document.addEventListener('keydown', onPopupEscPress);
+
 };
 
 var closePopup = function () {
@@ -92,6 +94,16 @@ setupClose.addEventListener('keydown', function (evt) {
     closePopup();
   }
 });
+
+var input = document.querySelector('.setup-user-name');
+
+input.addEventListener('focus', function() {
+  document.removeEventListener('keydown', onPopupEscPress);
+});
+
+input.addEventListener('blur', function() {
+  document.addEventListener('keydown', onPopupEscPress);
+})
 
 /* изменение цвета мантии по клику */
 var wizardCoat = setup.querySelector('.setup-wizard .wizard-coat');
