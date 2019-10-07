@@ -2,6 +2,8 @@
 
 (function () {
 
+  var startOffsetCoords = {};
+
   var setupOpen = document.querySelector('.setup-open');
   var setupClose = window.util.setup.querySelector('.setup-close');
 
@@ -19,8 +21,8 @@
   var closePopup = function () {
     window.util.setup.classList.add('hidden');
     document.removeEventListener('keydown', onPopupEscPress);
-    window.util.setup.style.top = window.startOffsetCoords.y + 'px';
-    window.util.setup.style.left = window.startOffsetCoords.x + 'px';
+    window.util.setup.style.top = startOffsetCoords.y + 'px';
+    window.util.setup.style.left = startOffsetCoords.x + 'px';
   };
 
   setupOpen.addEventListener('click', function () {
@@ -61,7 +63,7 @@
   dialogHadler.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
 
-    window.startOffsetCoords = {
+    startOffsetCoords = {
       x: window.util.setup.offsetLeft,
       y: window.util.setup.offsetTop
     };
