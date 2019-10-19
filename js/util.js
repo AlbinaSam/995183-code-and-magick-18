@@ -12,8 +12,6 @@
 
     ENTER_KEYCODE: 13,
 
-    setup: document.querySelector('.setup')
-
   };
 
 })();
