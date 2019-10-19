@@ -4,8 +4,9 @@
 
   var startOffsetCoords = {};
 
+  window.setup = document.querySelector('.setup');
   var setupOpen = document.querySelector('.setup-open');
-  var setupClose = window.util.setup.querySelector('.setup-close');
+  var setupClose = window.setup.querySelector('.setup-close');
 
   var onPopupEscPress = function (evt) {
     if (evt.keyCode === window.util.ESC_KEYCODE) {
@@ -14,15 +15,15 @@
   };
 
   var openPopup = function () {
-    window.util.setup.classList.remove('hidden');
+    window.setup.classList.remove('hidden');
     document.addEventListener('keydown', onPopupEscPress);
   };
 
   var closePopup = function () {
-    window.util.setup.classList.add('hidden');
+    window.setup.classList.add('hidden');
     document.removeEventListener('keydown', onPopupEscPress);
-    window.util.setup.style.top = startOffsetCoords.y + 'px';
-    window.util.setup.style.left = startOffsetCoords.x + 'px';
+    window.setup.style.top = startOffsetCoords.y + 'px';
+    window.setup.style.left = startOffsetCoords.x + 'px';
   };
 
   setupOpen.addEventListener('click', function () {
@@ -58,14 +59,14 @@
 
   // реализуем перемещение окна
 
-  var dialogHadler = window.util.setup.querySelector('.upload');
+  var dialogHadler = window.setup.querySelector('.upload');
 
   dialogHadler.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
 
     startOffsetCoords = {
-      x: window.util.setup.offsetLeft,
-      y: window.util.setup.offsetTop
+      x: window.setup.offsetLeft,
+      y: window.setup.offsetTop
     };
 
     var startCoords = {
@@ -89,8 +90,8 @@
         y: moveEvt.clientY
       };
 
-      window.util.setup.style.top = (window.util.setup.offsetTop - shift.y) + 'px';
-      window.util.setup.style.left = (window.util.setup.offsetLeft - shift.x) + 'px';
+      window.setup.style.top = (window.setup.offsetTop - shift.y) + 'px';
+      window.setup.style.left = (window.setup.offsetLeft - shift.x) + 'px';
 
     };
 
