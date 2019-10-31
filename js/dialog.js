@@ -4,26 +4,30 @@
 
   var startOffsetCoords = {};
 
-  window.setup = document.querySelector('.setup');
+  var setup = document.querySelector('.setup');
+
+  window.dialog = {
+
+    closePopup: function () {
+      setup.classList.add('hidden');
+      document.removeEventListener('keydown', onPopupEscPress);
+      setup.style.top = startOffsetCoords.y + 'px';
+      setup.style.left = startOffsetCoords.x + 'px';
+    }
+  };
+
   var setupOpen = document.querySelector('.setup-open');
-  var setupClose = window.setup.querySelector('.setup-close');
+  var setupClose = setup.querySelector('.setup-close');
 
   var onPopupEscPress = function (evt) {
     if (evt.keyCode === window.util.ESC_KEYCODE) {
-      closePopup();
+      window.dialog.closePopup();
     }
   };
 
   var openPopup = function () {
-    window.setup.classList.remove('hidden');
+    setup.classList.remove('hidden');
     document.addEventListener('keydown', onPopupEscPress);
-  };
-
-  var closePopup = function () {
-    window.setup.classList.add('hidden');
-    document.removeEventListener('keydown', onPopupEscPress);
-    window.setup.style.top = startOffsetCoords.y + 'px';
-    window.setup.style.left = startOffsetCoords.x + 'px';
   };
 
   setupOpen.addEventListener('click', function () {
@@ -37,12 +41,12 @@
   });
 
   setupClose.addEventListener('click', function () {
-    closePopup();
+    window.dialog.closePopup();
   });
 
   setupClose.addEventListener('keydown', function (evt) {
     if (evt.keyCode === window.util.ENTER_KEYCODE) {
-      closePopup();
+      window.dialog.closePopup();
     }
   });
 
@@ -59,14 +63,14 @@
 
   // реализуем перемещение окна
 
-  var dialogHadler = window.setup.querySelector('.upload');
+  var dialogHadler = setup.querySelector('.upload');
 
   dialogHadler.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
 
     startOffsetCoords = {
-      x: window.setup.offsetLeft,
-      y: window.setup.offsetTop
+      x: setup.offsetLeft,
+      y: setup.offsetTop
     };
 
     var startCoords = {
@@ -90,8 +94,8 @@
         y: moveEvt.clientY
       };
 
-      window.setup.style.top = (window.setup.offsetTop - shift.y) + 'px';
-      window.setup.style.left = (window.setup.offsetLeft - shift.x) + 'px';
+      setup.style.top = (setup.offsetTop - shift.y) + 'px';
+      setup.style.left = (setup.offsetLeft - shift.x) + 'px';
 
     };
 
